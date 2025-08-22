@@ -15,39 +15,45 @@
     <div class="particles" id="particles"></div>
 
     <!-- Header -->
-    <header class="header">
-        <div class="nav-container">
-            <div class="logo">
-                <div class="logo-icon">🛡️</div>
-                CyberSaathi
-            </div>
-            
-            <nav class="nav-menu">
-                <button class="nav-btn active" onclick="showSection('home')">Home</button>
-                <button class="nav-btn" onclick="showSection('analyzer')">Analyze</button>
-                <button class="nav-btn" onclick="showSection('learning')">Learn</button>
-                <button class="nav-btn emergency-nav" onclick="showSection('emergency')">Emergency</button>
-                <div class="profile-dropdown">
-                    <div class="profile-dropdown">
-                        <button class="nav-btn profile-btn" onclick="toggleProfileDropdown()">
-                            <span class="profile-icon">👤</span>
-                            Profile
-                        </button>
-                        <div class="profile-menu" id="profileMenu">
-                            <div class="profile-email">
-                                <span class="menu-icon">📧</span>
-                                user@example.com
-                            </div>
-                            <a href="#" onclick="logout()">
-                                <span class="menu-icon">🚪</span>
-                                Logout
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </nav>
+   <!-- Replace your existing header section with this -->
+<header class="header">
+    <div class="nav-container">
+        <div class="logo">
+            <div class="logo-icon">🛡️</div>
+            <span class="logo-text">CyberSaathi</span>
         </div>
-    </header>
+        
+        <!-- Mobile Menu Toggle -->
+        <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
+        
+        <!-- Navigation Menu -->
+        <nav class="nav-menu" id="navMenu">
+            <div class="nav-overlay" onclick="toggleMobileMenu()"></div>
+            <div class="nav-content">
+                <button class="nav-btn active" onclick="showSection('home')">
+                    <span class="nav-icon">🏠</span>
+                    <span class="nav-text">Home</span>
+                </button>
+                <button class="nav-btn" onclick="showSection('analyzer')">
+                    <span class="nav-icon">🔍</span>
+                    <span class="nav-text">Analyze</span>
+                </button>
+                <button class="nav-btn" onclick="showSection('learning')">
+                    <span class="nav-icon">🎯</span>
+                    <span class="nav-text">Learn</span>
+                </button>
+                <button class="nav-btn emergency-nav" onclick="showSection('emergency')">
+                    <span class="nav-icon">🚨</span>
+                    <span class="nav-text">Emergency</span>
+                </button>
+            </div>
+        </nav>
+    </div>
+</header>
 
     <main class="main-container">
         {% block content %}

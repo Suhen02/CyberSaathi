@@ -474,3 +474,63 @@ document.addEventListener('click', function(event) {
         profileMenu.classList.remove('show');
     }
 });
+// Add these JavaScript functions to your existing script.js file
+
+// Mobile menu toggle function
+function toggleMobileMenu() {
+    const navMenu = document.getElementById('navMenu');
+    const mobileToggle = document.querySelector('.mobile-menu-toggle');
+    
+    navMenu.classList.toggle('active');
+    mobileToggle.classList.toggle('active');
+}
+
+// Update the existing showSection function to close mobile menu
+function showSection(sectionId) {
+    // Hide all sections
+    document.querySelectorAll('.section').forEach(section => {
+        section.classList.remove('active');
+    });
+    
+    // Remove active class from all nav buttons
+    document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    
+    // Show selected section
+    document.getElementById(sectionId).classList.add('active');
+    
+    // Add active class to clicked button
+    event.target.classList.add('active');
+    
+    // Close mobile menu if open
+    const navMenu = document.getElementById('navMenu');
+    const mobileToggle = document.querySelector('.mobile-menu-toggle');
+    if (navMenu.classList.contains('active')) {
+        navMenu.classList.remove('active');
+        mobileToggle.classList.remove('active');
+    }
+}
+
+// Close mobile menu when clicking outside
+document.addEventListener('click', function(event) {
+    const navMenu = document.getElementById('navMenu');
+    const mobileToggle = document.querySelector('.mobile-menu-toggle');
+    const isClickInsideNav = navMenu.contains(event.target);
+    const isClickOnToggle = mobileToggle.contains(event.target);
+    
+    if (!isClickInsideNav && !isClickOnToggle && navMenu.classList.contains('active')) {
+        navMenu.classList.remove('active');
+        mobileToggle.classList.remove('active');
+    }
+});
+
+// Handle window resize
+window.addEventListener('resize', function() {
+    if (window.innerWidth > 768) {
+        const navMenu = document.getElementById('navMenu');
+        const mobileToggle = document.querySelector('.mobile-menu-toggle');
+        navMenu.classList.remove('active');
+        mobileToggle.classList.remove('active');
+    }
+});
