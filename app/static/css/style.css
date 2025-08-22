@@ -732,10 +732,11 @@ body {
     position: absolute;
     top: 100%;
     right: 0;
+    background: rgba(31, 119, 146, 0.95);
     backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 10px;
-    min-width: 180px;
+    min-width: 200px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     z-index: 1000;
     margin-top: 0.5rem;
@@ -757,23 +758,28 @@ body {
     }
 }
 
+.profile-email {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.5rem;
+    color: black;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+}
+
 .profile-menu a {
     display: flex;
     align-items: center;
     gap: 0.75rem;
     padding: 1rem 1.5rem;
-    color: #ffffff;
+    color: black;
     text-decoration: none;
     transition: all 0.2s ease;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.profile-menu a:last-child {
-    border-bottom: none;
 }
 
 .profile-menu a:hover {
-    
+    background: rgba(255, 255, 255, 0.1);
     color: #00d4ff;
 }
 

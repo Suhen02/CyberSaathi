@@ -1,351 +1,256 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CyberSaathi - Advanced Scam Detection</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
-    <link rel="stylesheet" href="../static/css/style.css">
-</head>
-<body>
-    <!-- Dynamic Background -->
-    <div class="bg-container"></div>
-    <div class="particles" id="particles"></div>
+{% extends 'base.html' %}
 
-    <!-- Header -->
-    <header class="header">
-        <div class="nav-container">
-            <div class="logo">
-                <div class="logo-icon">🛡️</div>
-                CyberSaathi
+{% block title %}CyberSaathi - Advanced Scam Detection{% endblock %}
+
+{% block content %}
+<!-- Home Section -->
+<section id="home" class="section active">
+    <div class="container">
+        <div class="hero">
+            <div class="hero-content">
+                <h1>CyberSaathi</h1>
+                <p>Advanced AI-powered scam detection and real-time protection for everyone. Stay safe in the digital world with cutting-edge machine learning technology.</p>
+                
+                <div class="hero-buttons">
+                    <button class="hero-btn" onclick="showSection('analyzer')">
+                        🔍 Analyze Call
+                    </button>
+                    <button class="hero-btn" onclick="showSection('learning')">
+                        🎯 Learn Safety
+                    </button>
+                    <button class="hero-btn emergency-btn" onclick="showSection('emergency')">
+                        🚨 Emergency Help
+                    </button>
+                </div>
             </div>
-            <nav class="nav-menu">
-    <button class="nav-btn active" onclick="showSection('home')">Home</button>
-    <button class="nav-btn" onclick="showSection('analyzer')">Analyze</button>
-    <button class="nav-btn" onclick="showSection('learning')">Learn</button>
-    <button class="nav-btn emergency-nav" onclick="showSection('emergency')">Emergency</button>
-    <div class="profile-dropdown">
-        <button class="nav-btn profile-btn" onclick="toggleProfileDropdown()">
-            <span class="profile-icon">👤</span>
-            
-        </button>
-        <div class="profile-menu" id="profileMenu">
-            <a href="#" onclick="editProfile()">
-                <span class="menu-icon">✏️</span>
-                Edit Profile
-            </a>
-            <a href="#" onclick="logout()">
-                <span class="menu-icon">🚪</span>
-                Logout
-            </a>
+
+            <div class="challenges">
+                <h2 style="text-align: center; color: rgba(0, 0, 0, 0.725); margin-bottom: 2rem; font-size: 2.5rem;">Critical Challenges We Face</h2>
+                <div class="challenges-grid">
+                    <div class="challenge-card">
+                        <span class="challenge-icon">📈</span>
+                        <h3 style="color: #ef4444; margin-bottom: 1rem;">Rising Scam Volume</h3>
+                        <p style="color: black;">Over 2.8 billion scam calls made annually, with losses exceeding $30 billion globally. Traditional detection methods can't keep pace.</p>
+                    </div>
+                    <div class="challenge-card">
+                        <span class="challenge-icon">🎭</span>
+                        <h3 style="color: #ef4444; margin-bottom: 1rem;">Sophisticated Tactics</h3>
+                        <p style="color: black;">AI-powered voice cloning, deepfakes, and psychological manipulation make scams increasingly difficult to detect manually.</p>
+                    </div>
+                    <div class="challenge-card">
+                        <span class="challenge-icon">👥</span>
+                        <h3 style="color: #ef4444; margin-bottom: 1rem;">Vulnerable Populations</h3>
+                        <p style="color: black;">Seniors lose $1.7 billion annually to scams. Language barriers and digital literacy gaps increase vulnerability.</p>
+                    </div>
+                    <div class="challenge-card">
+                        <span class="challenge-icon">⚡</span>
+                        <h3 style="color: #ef4444; margin-bottom: 1rem;">Real-Time Detection</h3>
+                        <p style="color: black;">Scammers exploit urgency and pressure. Detection systems need millisecond response times to be effective.</p>
+                    </div>
+                    <div class="challenge-card">
+                        <span class="challenge-icon">🔥</span>
+                        <h3 style="color: #ef4444; margin-bottom: 1rem;">Evolving Threats</h3>
+                        <p style="color: black;">New scam techniques emerge daily. Static detection rules become obsolete within weeks of deployment.</p>
+                    </div>
+                    <div class="challenge-card">
+                        <span class="challenge-icon">🌍</span>
+                        <h3 style="color: #ef4444; margin-bottom: 1rem;">Cross-Border Crime</h3>
+                        <p style="color: black;">International scam operations exploit jurisdictional gaps, making traditional law enforcement response ineffective.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- How It Works Section -->
+            <div class="how-works">
+                <h2 style="text-align: center; color: #3c4142; margin-bottom: 2rem; font-size: 2.5rem;">How CyberSaathi Works</h2>
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h3 style="color: #3c4142; margin-bottom: 1rem;">Upload Audio</h3>
+                        <p>Upload your suspicious call recording or enter the transcript for analysis</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h3 style="color: #3c4142; margin-bottom: 1rem;">AI Analysis</h3>
+                        <p>Our advanced AI analyzes speech patterns, content, and behavioral markers</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <h3 style="color: #3c4142; margin-bottom: 1rem;">Risk Assessment</h3>
+                        <p>Get instant risk scores and detailed threat analysis with actionable insights</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">4</div>
+                        <h3 style="color: #3c4142; margin-bottom: 1rem;">Protection Action</h3>
+                        <p>Receive recommendations and automated reporting to relevant authorities</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</nav>
+</section>
+
+<!-- Enhanced Analyzer Section -->
+<section id="analyzer" class="section">
+    <div class="container">
+        <div class="analyzer-container">
+            <p style="text-align: center; color: black; margin-bottom: 1rem; font-size: 1.2rem;">
+                Upload an audio file to detect possible scam types.
+            </p>
+
+            <!-- Added form -->
+            <form id="analyzerForm" method="post" enctype="multipart/form-data">
+                <div class="analyzer-interface">
+                    <div class="upload-section">
+                        <div class="upload-area" id="upload-area">
+                            <div class="upload-icon">🔊</div>
+                            <h3 style="color: black; margin-bottom: 1rem;">Drop Audio Here</h3>
+                            <p style="color: black;">- or -</p>
+                            <p style="color: black; margin-top: 0.5rem;">Click to Upload</p>
+                            <input type="file" name="audioFile" id="audioFile" accept="audio/*" style="display: none;">
+                        </div>
+                        
+                        <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                            <div style="background: #413f3d; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+                                🔊
+                            </div>
+                            <div style="background: #6b7280; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+                                🎤
+                            </div>
+                        </div>
+                        
+                        <div style="margin-top: 2rem;">
+                            <button type="reset" class="clear-btn">Clear</button>
+                            <button type="submit" class="submit-btn">Submit</button>
+                        </div>
+                    </div>
+
+                    <div class="results-section">
+                        <div class="input-group">
+                            <label for="transcript">Transcript</label>
+                            <textarea id="transcript" class="form-input" rows="4" placeholder="Transcript will appear here..."></textarea>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="category">Predicted Category</label>
+                            <input type="text" id="category" class="form-input" readonly placeholder="Analysis category will appear here...">
+                        </div>
+                        
+                        <button type="button" class="flag-btn">Flag</button>
+                    </div>
+                </div>
+            </form>
+            <!-- End form -->
         </div>
-    </header>
+    </div>
+</section>
 
-    <main class="main-container">
-        <!-- Home Section -->
-        <section id="home" class="section active">
-            <div class="container">
-                <div class="hero">
-                    <div class="hero-content">
-                        <h1>CyberSaathi</h1>
-                        <p>Advanced AI-powered scam detection and real-time protection for everyone. Stay safe in the digital world with cutting-edge machine learning technology.</p>
-                        
-                        <div class="hero-buttons">
-                            <button class="hero-btn" onclick="showSection('analyzer')">
-                                🔍 Analyze Call
-                            </button>
-                            <button class="hero-btn" onclick="showSection('learning')">
-                                🎯 Learn Safety
-                            </button>
-                            <button class="hero-btn emergency-btn" onclick="showSection('emergency')">
-                                🚨 Emergency Help
-                            </button>
-                            
-                        </div>
-                    </div>
-
-
-                       <div class="challenges">
-                        <h2 style="text-align: center; color: rgba(0, 0, 0, 0.725); margin-bottom: 2rem; font-size: 2.5rem;">Critical Challenges We Face</h2>
-                        <div class="challenges-grid">
-                            <div class="challenge-card">
-                                <span class="challenge-icon">📈</span>
-                                <h3 style="color: #ef4444; margin-bottom: 1rem;">Rising Scam Volume</h3>
-                                <p style="color: black;">Over 2.8 billion scam calls made annually, with losses exceeding $30 billion globally. Traditional detection methods can't keep pace.</p>
-                            </div>
-                            <div class="challenge-card">
-                                <span class="challenge-icon">🎭</span>
-                                <h3 style="color: #ef4444; margin-bottom: 1rem;">Sophisticated Tactics</h3>
-                                <p style="color: black;">AI-powered voice cloning, deepfakes, and psychological manipulation make scams increasingly difficult to detect manually.</p>
-                            </div>
-                            <div class="challenge-card">
-                                <span class="challenge-icon">👥</span>
-                                <h3 style="color: #ef4444; margin-bottom: 1rem;">Vulnerable Populations</h3>
-                                <p style="color: black;">Seniors lose $1.7 billion annually to scams. Language barriers and digital literacy gaps increase vulnerability.</p>
-                            </div>
-                            <div class="challenge-card">
-                                <span class="challenge-icon">⚡</span>
-                                <h3 style="color: #ef4444; margin-bottom: 1rem;">Real-Time Detection</h3>
-                                <p style="color: black;">Scammers exploit urgency and pressure. Detection systems need millisecond response times to be effective.</p>
-                            </div>
-                            <div class="challenge-card">
-                                <span class="challenge-icon">🔄</span>
-                                <h3 style="color: #ef4444; margin-bottom: 1rem;">Evolving Threats</h3>
-                                <p style="color: black;">New scam techniques emerge daily. Static detection rules become obsolete within weeks of deployment.</p>
-                            </div>
-                            <div class="challenge-card">
-                                <span class="challenge-icon">🌐</span>
-                                <h3 style="color: #ef4444; margin-bottom: 1rem;">Cross-Border Crime</h3>
-                                <p style="color: black;">International scam operations exploit jurisdictional gaps, making traditional law enforcement response ineffective.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- How It Works Section -->
-                    <div class="how-works">
-                        <h2 style="text-align: center; color: #3c4142; margin-bottom: 2rem; font-size: 2.5rem;">How CyberSaathi Works</h2>
-                        <div class="steps-grid">
-                            <div class="step-card">
-                                <div class="step-number">1</div>
-                                <h3 style="color: #3c4142; margin-bottom: 1rem;">Upload Audio</h3>
-                                <p>Upload your suspicious call recording or enter the transcript for analysis</p>
-                            </div>
-                            <div class="step-card">
-                                <div class="step-number">2</div>
-                                <h3 style="color: #3c4142; margin-bottom: 1rem;">AI Analysis</h3>
-                                <p>Our advanced AI analyzes speech patterns, content, and behavioral markers</p>
-                            </div>
-                            <div class="step-card">
-                                <div class="step-number">3</div>
-                                <h3 style="color: #3c4142; margin-bottom: 1rem;">Risk Assessment</h3>
-                                <p>Get instant risk scores and detailed threat analysis with actionable insights</p>
-                            </div>
-                            <div class="step-card">
-                                <div class="step-number">4</div>
-                                <h3 style="color: #3c4142; margin-bottom: 1rem;">Protection Action</h3>
-                                <p>Receive recommendations and automated reporting to relevant authorities</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Critical Challenges Section -->
-                 
-                </div>
-            </div>
-        </section>
-
-        <!-- Enhanced Analyzer Section -->
-        <section id="analyzer" class="section">
-            <div class="container">
-                <div class="analyzer-container">
-                    <p style="text-align: center; color: black; margin-bottom: 1rem; font-size: 1.2rem;">Upload an audio file to detect possible scam types.</p>
-                    
-                    <div class="analyzer-interface">
-                        <div class="upload-section">
-                            <div class="upload-area" id="upload-area">
-                                <div class="upload-icon">🔍</div>
-                                <h3 style="color: black; margin-bottom: 1rem;">Drop Audio Here</h3>
-                                <p style="color: black;">- or -</p>
-                                <p style="color: black; margin-top: 0.5rem;">Click to Upload</p>
-                            </div>
-                            <div style="display: flex; gap: 1rem; margin-top: 2rem;">
-                                <div style="background: #413f3d; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer;">
-                                    🔊
-                                </div>
-                                <div style="background: #6b7280; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer;">
-                                    🎤
-                                </div>
-                            </div>
-                            <div style="margin-top: 2rem;">
-                                <button class="clear-btn" onclick="clearAnalysis()">Clear</button>
-                                <button class="submit-btn" onclick="startAnalysis()">Submit</button>
-                            </div>
-                        </div>
-
-                        <div class="results-section">
-                            <div class="input-group">
-                                <label for="transcript">Transcript</label>
-                                <textarea id="transcript" class="form-input" rows="4" placeholder="Transcript will appear here..."></textarea>
-                            </div>
-                            
-                            <div class="input-group">
-                                <label for="category">Predicted Category</label>
-                                <input type="text" id="category" class="form-input" readonly placeholder="Analysis category will appear here...">
-                            </div>
-                            
-                            <button class="flag-btn">Flag</button>
-                        </div>
-                    </div>
-
-                    
-                </div>
-            </div>
-        </section>
-
-        <!-- Enhanced Learning Section -->
-        <section id="learning" class="section">
-            <div class="container">
-                <div class="learning-container">
-                    <h2 style="text-align: center; font-size: 3rem; margin-bottom: 2rem; color: #3c4142;">Interactive Scam Training</h2>
-                    <p style="text-align: center; color: #111112; margin-bottom: 3rem; font-size: 1.2rem;">Choose your profile and master scam detection through  realistic scenarios</p>
-                    
-                    <div class="persona-grid">
-                        <div class="persona-card" onclick="startPersonaTraining('student')">
-                            <div class="persona-avatar">🎓</div>
-                            <h3 style="color: #101011; margin-bottom: 1rem;">Student</h3>
-                            <p style="color: black;">Scholarship scams, student loan fraud, fake university schemes, and work-from-home traps</p>
-                        </div>
-                        
-                        <div class="persona-card" onclick="startPersonaTraining('professional')">
-                            <div class="persona-avatar">💼</div>
-                            <h3 style="color: #1b1c1c; margin-bottom: 1rem;">Professional</h3>
-                            <p style="color: black;">Business email compromise, fake investment opportunities, corporate impersonation, and crypto scams</p>
-                        </div>
-                        
-                        <div class="persona-card" onclick="startPersonaTraining('senior')">
-                            <div class="persona-avatar">👴</div>
-                            <h3 style="color: #141515; margin-bottom: 1rem;">Senior Citizen</h3>
-                            <p style="color: black;">Medicare fraud, Social Security scams, tech support impersonation, and charity frauds</p>
-                        </div>
-                        
-                        <div class="persona-card" onclick="startPersonaTraining('homemaker')">
-                            <div class="persona-avatar">🏠</div>
-                            <h3 style="color: #0d0d0d; margin-bottom: 1rem;">Homemaker</h3>
-                            <p style="color: black;">Online shopping scams, utility fraud, fake charity solicitations, and romance scams</p>
-                        </div>
-                    </div>
-
-                    <div id="training-interface" class="scenario-interface">
-                        <div class="scenario-counter" id="scenario-counter">Scenario</div>
-                        <h3 style="color: #141414; margin-bottom: 2rem;" id="scenario-title">Scam Detection Challenge</h3>
-                        
-                        <div class="scenario-content" id="scenario-content">
-                            <p style="color: black;">Select a profile above to begin your personalized scam training journey.</p>
-                        </div>
-                        
-                        <div class="response-options" id="response-options" style="color: black;">
-                        </div>
-                        
-                        <div id="scenario-result" class="scenario-result" style="display: none;"></div>
-                        
-                        <div style="text-align: center; margin-top: 2rem;">
-                            <button class="hero-btn" onclick="nextScenario()" id="next-btn" style="display: none;">Next Scenario →</button>
-                            <button class="hero-btn" onclick="completeTraining()" id="complete-btn" style="display: none;">Complete Training 🏆</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Emergency Section -->
-        <section id="emergency" class="section">
-            <div class="container">
-                <div style="padding: 4rem 0; text-align: center;">
-                    
-
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin: 4rem 0;">
-                        <div style="background: rgba(72, 122, 135, 0.227); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 2rem; backdrop-filter: blur(20px);">
-                            <div style="font-size: 3rem; margin-bottom: 1rem; color: #3c4142;">🛑</div>
-                            <h4 style="color: #3c4142; margin-bottom: 1rem;">Stop Contact</h4>
-                            <p style="color: black;">Immediately cease all communication with the scammer. Block their number and email.</p>
-                        </div>
-                        
-                        <div style="background: rgba(72, 122, 135, 0.227);; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 2rem; backdrop-filter: blur(20px);">
-                            <div style="font-size: 3rem; margin-bottom: 1rem; color: #3c4142;">🏦</div>
-                            <h4 style="color: #3c4142; margin-bottom: 1rem;">Secure Finances</h4>
-                            <p style="color: black;">Contact your bank immediately if you shared financial information or made payments.</p>
-                        </div>
-                        
-                        <div style="background: rgba(72, 122, 135, 0.227);; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 2rem; backdrop-filter: blur(20px);">
-                            <div style="font-size: 3rem; margin-bottom: 1rem; color: #3c4142;">📋</div>
-                            <h4 style="color: #3c4142; margin-bottom: 1rem;">Document Everything</h4>
-                            <p style="color: black;">Save all evidence: screenshots, call logs, emails, and transaction records.</p>
-                        </div>
-                        
-                        <div style="background: rgba(72, 122, 135, 0.227);; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 2rem; backdrop-filter: blur(20px);">
-                            <div style="font-size: 3rem; margin-bottom: 1rem; color: #3c4142;">🚓</div>
-                            <h4 style="color: #3c4142; margin-bottom: 1rem;">Report to Authorities</h4>
-                            <p style="color: black;">File reports with FTC, FBI IC3, and your local police department immediately.</p>
-                        </div>
-                    </div>
-
-                    <div style="background: rgba(0, 212, 255, 0.1); border: 1px solid rgba(0, 212, 255, 0.3); border-radius: 20px; padding: 3rem; margin: 4rem 0; backdrop-filter: blur(20px);">
-                        <h3 style="color: #3c4142; text-align: center; margin-bottom: 3rem;">24/7 Emergency Hotlines</h3>
-                        
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
-                            <div style="background: rgba(0, 212, 255, 0.1); border: 1px solid rgba(0, 213, 255, 0.179); border-radius: 15px; padding: 1.5rem; text-align: center; backdrop-filter: blur(20px);">
-                                <h4 style="color: black;">Federal Trade Commission</h4>
-                                <div style="font-size: 1.3rem; font-weight: 600; color: #3c4142; margin-top: 0.5rem;">1-877-FTC-HELP</div>
-                            </div>
-                            
-                            <div style="background: rgba(0, 212, 255, 0.1); border: 1px solid rgba(0, 213, 255, 0.156); border-radius: 15px; padding: 1.5rem; text-align: center; backdrop-filter: blur(20px);">
-                                <h4 style="color: black;">FBI Internet Crime</h4>
-                                <div style="font-size: 1.3rem; font-weight: 600; color: #3c4142; margin-top: 0.5rem;">ic3.gov</div>
-                            </div>
-                            
-                            <div style="background: rgba(0, 212, 255, 0.1); border: 1px solid rgba(0, 213, 255, 0.138); border-radius: 15px; padding: 1.5rem; text-align: center; backdrop-filter: blur(20px);">
-                                <h4 style="color: black;">AARP Fraud Watch</h4>
-                                <div style="font-size: 1.3rem; font-weight: 600; color: #3c4142; margin-top: 0.5rem;">1-877-908-3360</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>CyberSaathi</h3>
-                    <p>Protecting millions from scams with advanced AI technology. Our mission is to create a safer digital world for everyone.</p>
-                    <p style="margin-top: 1rem;">🛡️ Advanced Protection • 🤖 AI-Powered • 🌐 Global Impact</p>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="#" onclick="showSection('analyzer')">Scam Analyzer</a></li>
-                        <li><a href="#" onclick="showSection('learning')">Training Center</a></li>
-                        <li><a href="#" onclick="showSection('emergency')">Emergency Help</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Resources</h3>
-                    <ul>
-                        <li><a href="https://www.ftc.gov/scams" target="_blank">FTC Scam Alerts</a></li>
-                        <li><a href="https://www.ic3.gov" target="_blank">FBI Internet Crime</a></li>
-                        <li><a href="https://www.aarp.org/money/scams-fraud/" target="_blank">AARP Fraud Watch</a></li>
-                        <li><a href="#">API Documentation</a></li>
-                        <li><a href="#">Research Papers</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Contact & Support</h3>
-                    <ul>
-                        <li>📧 support@guardian-ai.com</li>
-                        <li>🚨 emergency@guardian-ai.com</li>
-                        <li>📞 1-800-GUARDIAN</li>
-                        <li>💬 Live Chat Available 24/7</li>
-                        <li>🌐 Built with Gradio 😊</li>
-                    </ul>
-                </div>
-            </div>
+<!-- Enhanced Learning Section -->
+<section id="learning" class="section">
+    <div class="container">
+        <div class="learning-container">
+            <h2 style="text-align: center; font-size: 3rem; margin-bottom: 2rem; color: #3c4142;">Interactive Scam Training</h2>
+            <p style="text-align: center; color: #111112; margin-bottom: 3rem; font-size: 1.2rem;">Choose your profile and master scam detection through realistic scenarios</p>
             
-            <div class="footer-bottom">
-                <p>&copy; 2025 Guardian AI. All rights reserved. | Protecting humanity from digital threats.</p>
+            <div class="persona-grid">
+                <div class="persona-card" onclick="startPersonaTraining('student')">
+                    <div class="persona-avatar">🎓</div>
+                    <h3 style="color: #101011; margin-bottom: 1rem;">Student</h3>
+                    <p style="color: black;">Scholarship scams, student loan fraud, fake university schemes, and work-from-home traps</p>
+                </div>
+                
+                <div class="persona-card" onclick="startPersonaTraining('professional')">
+                    <div class="persona-avatar">💼</div>
+                    <h3 style="color: #1b1c1c; margin-bottom: 1rem;">Professional</h3>
+                    <p style="color: black;">Business email compromise, fake investment opportunities, corporate impersonation, and crypto scams</p>
+                </div>
+                
+                <div class="persona-card" onclick="startPersonaTraining('senior')">
+                    <div class="persona-avatar">👴</div>
+                    <h3 style="color: #141515; margin-bottom: 1rem;">Senior Citizen</h3>
+                    <p style="color: black;">Medicare fraud, Social Security scams, tech support impersonation, and charity frauds</p>
+                </div>
+                
+                <div class="persona-card" onclick="startPersonaTraining('homemaker')">
+                    <div class="persona-avatar">🏠</div>
+                    <h3 style="color: #0d0d0d; margin-bottom: 1rem;">Homemaker</h3>
+                    <p style="color: black;">Online shopping scams, utility fraud, fake charity solicitations, and romance scams</p>
+                </div>
+            </div>
+
+            <div id="training-interface" class="scenario-interface">
+                <div class="scenario-counter" id="scenario-counter">Scenario</div>
+                <h3 style="color: #141414; margin-bottom: 2rem;" id="scenario-title">Scam Detection Challenge</h3>
+                
+                <div class="scenario-content" id="scenario-content">
+                    <p style="color: black;">Select a profile above to begin your personalized scam training journey.</p>
+                </div>
+                
+                <div class="response-options" id="response-options" style="color: black;">
+                </div>
+                
+                <div id="scenario-result" class="scenario-result" style="display: none;"></div>
+                
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="hero-btn" onclick="nextScenario()" id="next-btn" style="display: none;">Next Scenario →</button>
+                    <button class="hero-btn" onclick="completeTraining()" id="complete-btn" style="display: none;">Complete Training 🏆</button>
+                </div>
             </div>
         </div>
-    </footer>
+    </div>
+</section>
 
-    <script src="../static/js/script.js"></script>
-</body>
-</html>
+<!-- Emergency Section -->
+<section id="emergency" class="section">
+    <div class="container">
+        <div style="padding: 4rem 0; text-align: center;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin: 4rem 0;">
+                <div style="background: rgba(72, 122, 135, 0.227); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 2rem; backdrop-filter: blur(20px);">
+                    <div style="font-size: 3rem; margin-bottom: 1rem; color: #3c4142;">🛑</div>
+                    <h4 style="color: #3c4142; margin-bottom: 1rem;">Stop Contact</h4>
+                    <p style="color: black;">Immediately cease all communication with the scammer. Block their number and email.</p>
+                </div>
+                
+                <div style="background: rgba(72, 122, 135, 0.227);; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 2rem; backdrop-filter: blur(20px);">
+                    <div style="font-size: 3rem; margin-bottom: 1rem; color: #3c4142;">🏦</div>
+                    <h4 style="color: #3c4142; margin-bottom: 1rem;">Secure Finances</h4>
+                    <p style="color: black;">Contact your bank immediately if you shared financial information or made payments.</p>
+                </div>
+                
+                <div style="background: rgba(72, 122, 135, 0.227);; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 2rem; backdrop-filter: blur(20px);">
+                    <div style="font-size: 3rem; margin-bottom: 1rem; color: #3c4142;">📋</div>
+                    <h4 style="color: #3c4142; margin-bottom: 1rem;">Document Everything</h4>
+                    <p style="color: black;">Save all evidence: screenshots, call logs, emails, and transaction records.</p>
+                </div>
+                
+                <div style="background: rgba(72, 122, 135, 0.227);; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 2rem; backdrop-filter: blur(20px);">
+                    <div style="font-size: 3rem; margin-bottom: 1rem; color: #3c4142;">🚓</div>
+                    <h4 style="color: #3c4142; margin-bottom: 1rem;">Report to Authorities</h4>
+                    <p style="color: black;">File reports with FTC, FBI IC3, and your local police department immediately.</p>
+                </div>
+            </div>
+
+            <div style="background: rgba(0, 212, 255, 0.1); border: 1px solid rgba(0, 212, 255, 0.3); border-radius: 20px; padding: 3rem; margin: 4rem 0; backdrop-filter: blur(20px);">
+                <h3 style="color: #3c4142; text-align: center; margin-bottom: 3rem;">24/7 Emergency Hotlines</h3>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                    <div style="background: rgba(0, 212, 255, 0.1); border: 1px solid rgba(0, 213, 255, 0.179); border-radius: 15px; padding: 1.5rem; text-align: center; backdrop-filter: blur(20px);">
+                        <h4 style="color: black;">Federal Trade Commission</h4>
+                        <div style="font-size: 1.3rem; font-weight: 600; color: #3c4142; margin-top: 0.5rem;">1-877-FTC-HELP</div>
+                    </div>
+                    
+                    <div style="background: rgba(0, 212, 255, 0.1); border: 1px solid rgba(0, 213, 255, 0.156); border-radius: 15px; padding: 1.5rem; text-align: center; backdrop-filter: blur(20px);">
+                        <h4 style="color: black;">FBI Internet Crime</h4>
+                        <div style="font-size: 1.3rem; font-weight: 600; color: #3c4142; margin-top: 0.5rem;">ic3.gov</div>
+                    </div>
+                    
+                    <div style="background: rgba(0, 212, 255, 0.1); border: 1px solid rgba(0, 213, 255, 0.138); border-radius: 15px; padding: 1.5rem; text-align: center; backdrop-filter: blur(20px);">
+                        <h4 style="color: black;">AARP Fraud Watch</h4>
+                        <div style="font-size: 1.3rem; font-weight: 600; color: #3c4142; margin-top: 0.5rem;">1-877-908-3360</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
