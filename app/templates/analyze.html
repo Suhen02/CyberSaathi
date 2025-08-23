@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block titile%}CyberBandu-Analyze{% endblock %}
+{% block content %}
+<section id="analyzer" class="analysec">
+    <div class="container">
+        <div class="analyzer-container">
+            <p style="text-align: center; color: black; margin-bottom: 1rem; font-size: 1.2rem;">
+                Upload an audio file to detect possible scam types.
+            </p>
+
+<form id="analyzerForm" method="post" enctype="multipart/form-data" action="{% url 'analyze' %}">
+    {% csrf_token %}
+    <div style="display: flex; flex-direction: column; width: 100%; max-width: 800px; background-color: white; border-radius: 1rem; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); overflow: hidden;">
+        <div style="background-color: #1f2937; color: white; padding: 2rem; text-align: center;">
+            <h2>Spam Call Analyzer</h2>
+        </div>
+
+        <div style="padding: 2.5rem; display: flex; flex-direction: column; gap: 2rem;">
+            <div id="upload-area" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2rem; border: 2px dashed #d1d5db; border-radius: 0.75rem; cursor: pointer; transition: border-color 0.3s ease-in-out; text-align: center;">
+                <div style="font-size: 3rem; color: #3b82f6;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 18V5l-5 5"/><path d="M9 18V5l5 5"/><circle cx="12" cy="18" r="4"/></svg>
+                </div>
+                <h3 style="margin-bottom: 0.5rem;">Drag & Drop Audio</h3>
+                <p>or click to upload</p>
+                <input type="file" name="audioFile" id="audioFile" accept="audio/*" style="display: none;">
+                <div id="file-status" style="text-align: center; font-size: 0.9rem; color: #4b5563; margin-top: 1rem;">No file selected.</div>
+            </div>
+
+           
+            
+            <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                <label for="category">Predicted Category</label>
+                <div style="color: black;">{{result}}</div>
+               
+            <div style="display: flex; justify-content: flex-end; gap: 1rem; margin-top: 1rem;">
+                <button type="button" id="clearBtn" style="padding: 0.75rem 1.5rem; border: none; border-radius: 0.5rem; font-weight: 600; cursor: pointer; background-color: #9ca3af; color: white;">Clear</button>
+                <button type="button" style="padding: 0.75rem 1.5rem; border: none; border-radius: 0.5rem; font-weight: 600; cursor: pointer; background-color: #f59e0b; color: white;">Flag</button>
+                <button type="submit" id="submitBtn" disabled style="padding: 0.75rem 1.5rem; border: none; border-radius: 0.5rem; font-weight: 600; cursor: pointer; background-color: #3b82f6; color: white;">Submit</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<script>
+    const uploadArea = document.getElementById('upload-area');
+    const audioFile = document.getElementById('audioFile');
+    const fileStatus = document.getElementById('file-status');
+    const clearBtn = document.getElementById('clearBtn');
+    const submitBtn = document.getElementById('submitBtn');
+
+    function handleFile(files) {
+        if (files.length > 0) {
+            audioFile.files = files;
+            fileStatus.textContent = `File selected: ${files[0].name}`;
+            submitBtn.disabled = false;
+        }
+    }
+
+    uploadArea.addEventListener('click', () => {
+        audioFile.click();
+    });
+
+    uploadArea.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        uploadArea.style.borderColor = '#3b82f6';
+    });
+
+    uploadArea.addEventListener('dragleave', () => {
+        uploadArea.style.borderColor = '#d1d5db';
+    });
+
+    uploadArea.addEventListener('drop', (e) => {
+        e.preventDefault();
+        uploadArea.style.borderColor = '#d1d5db';
+        handleFile(e.dataTransfer.files);
+    });
+
+    audioFile.addEventListener('change', (e) => {
+        handleFile(e.target.files);
+    });
+
+    clearBtn.addEventListener('click', () => {
+        audioFile.value = '';
+        fileStatus.textContent = 'No file selected.';
+        document.getElementById('transcript').value = '';
+        document.getElementById('category').value = '';
+        submitBtn.disabled = true;
+    });
+</script>
+        </div>
+    </div>
+</section>
+{% endblock %}
