@@ -1,7 +1,7 @@
 <!-- signup.html -->
 {% extends 'base_in.html' %}
 
-{% block title %}Sign Up - CyberSaathi{% endblock %}
+{% block title %}Sign Up - CyberBandu{% endblock %}
 
 {% block content %}
 <div class="auth-form" id="signupForm">
@@ -21,8 +21,8 @@
     <form method="post" id="signupFormElement">
         {% csrf_token %}
         <div class="form-group">
-            <input type="text" id="name" name="name" required value="{{ form.name.value|default:'' }}">
-            <label for="name">Full Name</label>
+            <input type="text" id="username" name="username" required value="{{ form.name.value|default:'' }}">
+            <label for="username">User Name</label>
         </div>
         
         <div class="form-group">
@@ -48,35 +48,6 @@
     </div>
 </div>
 
-<div class="auth-form hidden" id="loginForm" style="display: none;">
-    <div class="form-title">
-        <h2>Login</h2>
-        <p>Welcome back! Please sign in to your account</p>
-    </div>
-    
-    <form method="post" action="{% url 'login' %}" id="loginFormElement">
-        {% csrf_token %}
-        <div class="form-group">
-            <input type="email" id="login_email" name="email" required>
-            <label for="login_email">Email Address</label>
-        </div>
-        
-        <div class="form-group">
-            <input type="password" id="login_password" name="password" required>
-            <label for="login_password">Password</label>
-        </div>
-        
-        <button type="submit" class="auth-btn">Login</button>
-    </form>
-    
-    <div class="forgot-password">
-        <a href="#" onclick="showForgotPassword()">Forgot your password?</a>
-    </div>
-    
-    <div class="switch-form">
-        <p>Don't have an account? <a href="#" onclick="switchForm('signupForm')">Sign up here</a></p>
-    </div>
-</div>
 {% endblock %}
 
 {% block extra_js %}
