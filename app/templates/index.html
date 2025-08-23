@@ -60,32 +60,34 @@
                 </div>
             </div>
 
+      <div class="section-container">
+        <h2>Fraud Cases in India (2020–2025)</h2>
+        <div class="chart-container">
+            <canvas id="threatsChart"></canvas>
+        </div>
+    </div>
+
             <!-- How It Works Section -->
-            <div class="how-works">
-                <h2 style="text-align: center; color: #3c4142; margin-bottom: 2rem; font-size: 2.5rem;">How CyberBandu Works</h2>
-                <div class="steps-grid">
-                    <div class="step-card">
-                        <div class="step-number">1</div>
-                        <h3 style="color: #3c4142; margin-bottom: 1rem;">Upload Audio</h3>
-                        <p>Upload your suspicious call recording or enter the transcript for analysis</p>
-                    </div>
-                    <div class="step-card">
-                        <div class="step-number">2</div>
-                        <h3 style="color: #3c4142; margin-bottom: 1rem;">AI Analysis</h3>
-                        <p>Our advanced AI analyzes speech patterns, content, and behavioral markers</p>
-                    </div>
-                    <div class="step-card">
-                        <div class="step-number">3</div>
-                        <h3 style="color: #3c4142; margin-bottom: 1rem;">Risk Assessment</h3>
-                        <p>Get instant risk scores and detailed threat analysis with actionable insights</p>
-                    </div>
-                    <div class="step-card">
-                        <div class="step-number">4</div>
-                        <h3 style="color: #3c4142; margin-bottom: 1rem;">Protection Action</h3>
-                        <p>Receive recommendations and automated reporting to relevant authorities</p>
-                    </div>
-                </div>
-            </div>
+           <div class="how-works">
+    <h2 style="text-align: center; color: #3c4142; margin-bottom: 2rem; font-size: 2.5rem;">How CyberBandu Works</h2>
+    <div class="steps-grid">
+        <div class="step-card">
+            <div class="step-number">1</div>
+            <h3 style="color: #3c4142; margin-bottom: 1rem;">Upload Audio</h3>
+            <p>Upload your suspicious call recording or enter the transcript for analysis</p>
+        </div>
+        <div class="step-card">
+            <div class="step-number">2</div>
+            <h3 style="color: #3c4142; margin-bottom: 1rem;">AI Analysis</h3>
+            <p>Our advanced AI analyzes speech patterns, content, and behavioral markers</p>
+        </div>
+        <div class="step-card">
+            <div class="step-number">3</div>
+            <h3 style="color: #3c4142; margin-bottom: 1rem;">Risk Assessment</h3>
+            <p>Get a transcript, predicted category, and a risk flag for the uploaded audio.</p>
+        </div>
+    </div>
+</div>
         </div>
     </div>
 </section>
@@ -198,6 +200,26 @@
             </div>
         </div>
     </div>
+     <div class="section-container">
+        <h2>Cyber Safety Tips</h2>
+
+        <div class="personalization-options">
+            <label for="demographic-select" style="font-weight: bold; color: #3c4142;">Select Your Demographic:</label>
+            <select id="demographic-select">
+                <option value="students">Students</option>
+                <option value="homemakers">Homemakers</option>
+                <option value="seniors">Senior Citizens</option>
+                <option value="everyone" selected>Everyone</option>
+            </select>
+        </div>
+
+        <div class="threat-feed-container">
+            <div id="threat-feed">
+                <!-- Feed items will be populated here by JavaScript -->
+                <p style="text-align: center; color: #777;">Loading personalized tips...</p>
+            </div>
+        </div>
+    </div>
 </section>
 
 <!-- Emergency Section -->
@@ -253,4 +275,202 @@
         </div>
     </div>
 </section>
+
+{% endblock %}
+{% block extra_js %}
+    <!-- Chart.js library from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+   <script>
+        window.addEventListener('load', () => {
+            const ctx = document.getElementById('threatsChart').getContext('2d');
+
+            const labels = ['2020', '2021', '2022', '2023', '2024', '2025'];
+            const data = [10395, 14007, 2800000, 2440000, 3640000, 2400000];
+
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Estimated Number of Cases in India',
+                        data: data,
+                        borderColor: '#5cb8ff',
+                        backgroundColor: 'rgba(0, 212, 255, 0.2)',
+                        pointBackgroundColor: '#00d4ff',
+                        pointBorderColor: '#fff',
+                        tension: 0.4,
+                        fill: true,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.1)'
+                            },
+                            ticks: {
+                                color: '#555'
+                            }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.1)'
+                            },
+                            ticks: {
+                                color: '#555'
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: '#3c4142'
+                            }
+                        },
+                        tooltip: {
+                            backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                            titleColor: '#3c4142',
+                            bodyColor: '#555',
+                            borderColor: '#00d4ff',
+                            borderWidth: 1
+                        }
+                    },
+                    animation: {
+                        duration: 2000,
+                        easing: 'easeInOutQuad'
+                    }
+                }
+            });
+        });
+         window.addEventListener('load', () => {
+            const feedContainer = document.getElementById('threat-feed');
+            const demographicSelect = document.getElementById('demographic-select');
+
+            const demographicTips = {
+                everyone: [
+                    { icon: '🔒', title: 'Two-Factor Authentication (2FA)', description: 'Always enable 2FA on your accounts for an extra layer of security.' },
+                    { icon: '🔑', title: 'Strong Passwords', description: 'Use complex and unique passwords for each account. Consider using a password manager.' },
+                    { icon: '⚠️', title: 'Recognize Phishing', description: 'Be cautious of unsolicited emails or messages asking for personal information.' },
+                    { icon: '🔄', title: 'Regular Updates', description: 'Keep your operating system, apps, and antivirus software up to date.' }
+                ],
+                students: [
+                    { icon: '📚', title: 'Safe Public Wi-Fi', description: 'Avoid logging into sensitive accounts on public Wi-Fi. Use a VPN for added security.' },
+                    { icon: '💬', title: 'Social Media Privacy', description: 'Review your privacy settings on social media and be mindful of what you share online.' },
+                    { icon: '🎮', title: 'Gaming Scams', description: 'Be aware of in-game scams, fake item offers, or malicious links sent via chat.' },
+                    { icon: '💻', title: 'Educational Discounts', description: 'Verify student discounts and special offers to ensure they are legitimate websites.' }
+                ],
+                homemakers: [
+                    { icon: '🛒', title: 'Secure Online Shopping', description: 'Shop only on reputable websites and check for "https://" in the URL.' },
+                    { icon: '�', title: 'Investment Scams', description: 'Be skeptical of unsolicited messages or calls promising high returns on investments.' },
+                    { icon: '👨‍👩‍👧‍👦', title: 'Family Protection', description: 'Teach your children about online safety and supervise their internet use.' },
+                    { icon: '📧', title: 'Common Scams', description: 'Look out for fake invoices, delivery notices, or charity requests sent via email.' }
+                ],
+                seniors: [
+                    { icon: '📞', title: 'Government Impersonation Scams', description: 'Government agencies will not call you to demand money or personal information. Hang up and verify the number.' },
+                    { icon: '👵', title: 'Tech Support Scams', description: 'Do not allow remote access to your computer from an unexpected caller. Legitimate companies will not do this.' },
+                    { icon: '💸', title: 'Grandparent Scams', description: 'Be cautious of urgent calls from a "grandchild" or "family member" asking for money. Verify their identity first.' },
+                    { icon: '💊', title: 'Medical Scams', description: 'Be skeptical of offers for free medical equipment or cures. Always consult a trusted medical professional.' }
+                ]
+            };
+
+            const updateFeed = (demographic) => {
+                feedContainer.innerHTML = ''; // Clear existing feed content
+                const tips = demographicTips[demographic] || demographicTips.everyone;
+
+                if (tips.length === 0) {
+                    feedContainer.innerHTML = `<p style="text-align: center; color: #777;">No tips available for this demographic.</p>`;
+                    return;
+                }
+
+                tips.forEach(tip => {
+                    const item = document.createElement('div');
+                    item.classList.add('threat-feed-item');
+                    item.innerHTML = `
+                        <span class="threat-icon">${tip.icon}</span>
+                        <div class="threat-content">
+                            <h4>${tip.title}</h4>
+                            <p>${tip.description}</p>
+                        </div>
+                    `;
+                    feedContainer.appendChild(item);
+                });
+            };
+            
+            // Handle demographic selection change
+            demographicSelect.addEventListener('change', (event) => {
+                const selectedDemographic = event.target.value;
+                updateFeed(selectedDemographic);
+            });
+
+            // Initial load with the default "Everyone" demographic
+            updateFeed(demographicSelect.value);
+        });
+         window.addEventListener('load', () => {
+            const feedContainer = document.getElementById('threat-feed');
+            const demographicSelect = document.getElementById('demographic-select');
+
+            const demographicTips = {
+                everyone: [
+                    { icon: '🔒', title: 'Two-Factor Authentication (2FA)', description: 'Always enable 2FA on your accounts for an extra layer of security.' },
+                    { icon: '🔑', title: 'Strong Passwords', description: 'Use complex and unique passwords for each account. Consider using a password manager.' },
+                    { icon: '⚠️', title: 'Recognize Phishing', description: 'Be cautious of unsolicited emails or messages asking for personal information.' },
+                    { icon: '🔄', title: 'Regular Updates', description: 'Keep your operating system, apps, and antivirus software up to date.' }
+                ],
+                students: [
+                    { icon: '📚', title: 'Safe Public Wi-Fi', description: 'Avoid logging into sensitive accounts on public Wi-Fi. Use a VPN for added security.' },
+                    { icon: '💬', title: 'Social Media Privacy', description: 'Review your privacy settings on social media and be mindful of what you share online.' },
+                    { icon: '🎮', title: 'Gaming Scams', description: 'Be aware of in-game scams, fake item offers, or malicious links sent via chat.' },
+                    { icon: '💻', title: 'Educational Discounts', description: 'Verify student discounts and special offers to ensure they are legitimate websites.' }
+                ],
+                homemakers: [
+                    { icon: '🛒', title: 'Secure Online Shopping', description: 'Shop only on reputable websites and check for "https://" in the URL.' },
+                    { icon: '�', title: 'Investment Scams', description: 'Be skeptical of unsolicited messages or calls promising high returns on investments.' },
+                    { icon: '👨‍👩‍👧‍👦', title: 'Family Protection', description: 'Teach your children about online safety and supervise their internet use.' },
+                    { icon: '📧', title: 'Common Scams', description: 'Look out for fake invoices, delivery notices, or charity requests sent via email.' }
+                ],
+                seniors: [
+                    { icon: '📞', title: 'Government Impersonation Scams', description: 'Government agencies will not call you to demand money or personal information. Hang up and verify the number.' },
+                    { icon: '👵', title: 'Tech Support Scams', description: 'Do not allow remote access to your computer from an unexpected caller. Legitimate companies will not do this.' },
+                    { icon: '💸', title: 'Grandparent Scams', description: 'Be cautious of urgent calls from a "grandchild" or "family member" asking for money. Verify their identity first.' },
+                    { icon: '💊', title: 'Medical Scams', description: 'Be skeptical of offers for free medical equipment or cures. Always consult a trusted medical professional.' }
+                ]
+            };
+
+            const updateFeed = (demographic) => {
+                feedContainer.innerHTML = ''; // Clear existing feed content
+                const tips = demographicTips[demographic] || demographicTips.everyone;
+
+                if (tips.length === 0) {
+                    feedContainer.innerHTML = `<p style="text-align: center; color: #777;">No tips available for this demographic.</p>`;
+                    return;
+                }
+
+                tips.forEach(tip => {
+                    const item = document.createElement('div');
+                    item.classList.add('threat-feed-item');
+                    item.innerHTML = `
+                        <span class="threat-icon">${tip.icon}</span>
+                        <div class="threat-content">
+                            <h4>${tip.title}</h4>
+                            <p>${tip.description}</p>
+                        </div>
+                    `;
+                    feedContainer.appendChild(item);
+                });
+            };
+            
+            // Handle demographic selection change
+            demographicSelect.addEventListener('change', (event) => {
+                const selectedDemographic = event.target.value;
+                updateFeed(selectedDemographic);
+            });
+
+            // Initial load with the default "Everyone" demographic
+            updateFeed(demographicSelect.value);
+        });
+    </script>
 {% endblock %}

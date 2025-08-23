@@ -534,3 +534,70 @@ window.addEventListener('resize', function() {
         mobileToggle.classList.remove('active');
     }
 });
+
+
+
+ window.addEventListener('load', () => {
+            const ctx = document.getElementById('threatsChart').getContext('2d');
+
+            const labels = ['2020', '2021', '2022', '2023', '2024'];
+            const data = [120000, 180000, 320000, 650000, 1000000];
+
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Fraud Cases Detected in India',
+                        data: data,
+                        borderColor: '#5cb8ff',
+                        backgroundColor: 'rgba(0, 212, 255, 0.2)',
+                        pointBackgroundColor: '#00d4ff',
+                        pointBorderColor: '#fff',
+                        tension: 0.4,
+                        fill: true,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.1)'
+                            },
+                            ticks: {
+                                color: '#555'
+                            }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.1)'
+                            },
+                            ticks: {
+                                color: '#555'
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: '#3c4142'
+                            }
+                        },
+                        tooltip: {
+                            backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                            titleColor: '#3c4142',
+                            bodyColor: '#555',
+                            borderColor: '#00d4ff',
+                            borderWidth: 1
+                        }
+                    },
+                    animation: {
+                        duration: 2000,
+                        easing: 'easeInOutQuad'
+                    }
+                }
+            });
+        });
