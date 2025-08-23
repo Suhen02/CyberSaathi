@@ -1,126 +1,107 @@
-# 🛡️ CyberBandu
+# 🚨 GuardianBandu: AI-Powered Real-Time Scam & Harassment Detection
 
-### 📝 Overview
-
-CyberBandu, meaning "Cyber Relative," is a proactive web platform designed to combat the rising tide of cyber fraud in India. Our mission is to empower individuals from all walks of life—students, professionals, senior citizens, and homemakers—to recognize, prevent, and respond to digital threats effectively. By leveraging cutting-edge AI and providing personalized, demographic-based content, we aim to make cyber safety accessible and understandable for everyone.
+**Hackathon Submission for CodeFury 8.0**
 
 ---
 
-### ✨ Features
+## 👥 Team Information
+- **Team Name:** 404 FOUND  
+- **Team Members:**  
+  - Suhen M  
+  - Sandeep B  
+  - Sanjana P  
 
-#### 🗣️ AI-Powered Scam Analyzer
-Our core feature is an intelligent analyzer that puts the power of AI directly in the user's hands. By analyzing various forms of suspicious communication, it helps users identify threats they might otherwise miss.
-* **Voice and Text Analysis:** Users can upload audio recordings of suspicious calls or their written transcripts.
-* **Linguistic & Behavioral Red Flags:** The AI is trained to detect tell-tale signs of a scam, such as emotional manipulation, pressure tactics, and requests for financial information.
-* **Risk Scoring:** The system generates a risk score for the conversation, giving the user a quick, actionable insight.
-* **Predicted Scam Category:** The analyzer classifies the scam type (e.g., UPI fraud, OTP scam, job fraud), helping users understand the specific threat.
-* **Continuous Learning:** The model's accuracy improves over time by learning from new and evolving scam tactics, making CyberSaathi an adaptive and powerful tool.
-
-#### 🎓 Demographic-Based Content Engine
-The platform tailors its educational content to the user's specific demographic.
-* **Interactive Training:** Users can choose their profile (Student, Professional, Senior Citizen, or Homemaker) to access realistic, scenario-based training that helps them learn to identify and avoid common scams.
-* **Customized Tips:** The "Cyber Safety Tips" section provides advice relevant to the user's life.
-
-#### 🚨 Emergency Response Hub
-In the event of a scam, CyberSaathi provides a clear, four-step action plan to minimize damage.
-* **Immediate Steps:** Guidance on how to **Stop Contact**, **Secure Finances**, and **Document Everything**.
-* **Emergency Hotlines:** A dedicated section lists crucial 24/7 hotlines for reporting fraud to authorities like the **Federal Trade Commission (FTC)**, **FBI Internet Crime**, and **AARP Fraud Watch**.
-
-#### 📈 Threat Intelligence Feed
-We provide data-driven insights to raise awareness about the scale of cybercrime. The platform features a chart showcasing the trend of **"Fraud Cases in India (2020-2025),"** helping users understand the growing threat and the importance of staying vigilant.
+- **GitHub Repository:** [Suhen02/CyberSaathi](https://github.com/Suhen02/CyberSaathi)  
+- **Hosted Website:** [GuardianBandu Live](https://cybersaathi-l9b1.onrender.com)  
+- **Demo Video:** [YouTube Demo](https://www.youtube.com/watch?v=tVIwY8QlIYY)
 
 ---
 
-### 💻 Technology Stack
+## 📌 Application Description  
 
-* **Frontend:** HTML5, CSS3, JavaScript
-* **Backend:** Python with the **Django** framework
-* **AI/ML:** **PyTorch** for the scam detection model,	OpenAI Whisper,BERT, Hugging Face Transformers
-* **Database:** **SQLite3**  for development
-* **Deployment:** Heroku-ready with a **Procfile**
+**GuardianBandu** is an AI-powered proactive defence system against real-time scams and harassment via phone calls and messages.  
 
----
+### ⚠ The Problem  
+Phone scams and harassment calls are a widespread issue.  
+- Existing tools like Truecaller or Airtel spam filters rely heavily on **user reports**.  
+- Such systems are **reactive, not preventive**.  
+- Dangerous scams—such as impersonation by fraudsters, extortion, or fake government calls—often **bypass detection**, leaving vulnerable groups like students and senior citizens at risk.  
 
-### ⚙️ Installation & Usage
+### 💡 Our Solution  
+GuardianBandu takes scam prevention **one step further** by proactively analysing calls **in real-time**:  
+1. **Automatic Call Recording & Transcription**  
+   - Uses **OpenAI Whisper**, supporting 90+ languages, to transcribe incoming unknown calls.  
+2. **Real-Time Scam/Harassment Detection**  
+   - A custom **fine-tuned BERT-based NLP model** instantly classifies the call content into categories such as:  
+     - Extortion  
+     - Romance Scam  
+     - Tech Support Fraud  
+     - Healthcare Scam  
+3. **Immediate Alerts & Actions**  
+   - Users receive instant actionable alerts to:  
+     - Block the number  
+     - Report the incident  
+     - Save audio/transcript as **legal evidence**  
+4. **Emergency Support System**  
+   - A one-tap **"Emergency" button** guides victims through a **4-step response plan** to:  
+     - Secure themselves  
+     - Document the incident  
+     - Report to authorities  
+     - Seek further protection  
 
-#### Prerequisites
-* Python 3.8+
-* Git
-
-#### Setup
-1.  **Clone the repository:**
-    ```bash
-    git clone [https://github.com/Suhen02/CyberSaathi.git](https://github.com/Suhen02/CyberSaathi.git)
-    cd CyberSaathi
-    ```
-2.  **Install backend dependencies:**
-    ```bash
-    pip install -r requirements.txt
-    ```
-3.  **Run Django migrations to set up the database:**
-    ```bash
-    python manage.py migrate
-    ```
-4.  **Run the Django development server:**
-    ```bash
-    python manage.py runserver
-    ```
-    Open your web browser and navigate to `http://127.0.0.1:8000` to access the platform.
+👉 In short, GuardianBandu shifts scam protection from **reactive reporting** to a **real-time intelligent shield**, keeping users safe **before damage occurs**.  
 
 ---
 
-### 🖼️CyberBandu Screenshots
+## 🎯 Hackathon Prompt
+**CodeFury 8.0 Challenge:**  
+*Real-Time AI-Powered Harassment Detection for Calls & Messages*
 
-<p align="center">
-  <a href="#">
-    <img src="https://github.com/Suhen02/CyberSaathi/blob/main/signUppage.jpg" alt="Cyber Safety Tips" width="49%">
-  </a>
-  <a href="#">
-    <img src="https://github.com/Suhen02/CyberSaathi/blob/main/front-page.png" alt="Emergency Help" width="49%">
-  </a>
-</p>
-<br>
-<p align="center">
-  <a href="#">
-    <img src="https://github.com/Suhen02/CyberSaathi/blob/main/Graph-2020-2025.png" alt="Fraud Cases Graph" width="49%">
-  </a>
-  <a href="#">
-    <img src="https://github.com/Suhen02/CyberSaathi/blob/main/find-fraud-type-flag.png" alt="Scam Alert Training" width="49%">
-  </a>
-</p>
-<br>
-<p align="center">
-  <a href="#">
-    <img src="https://github.com/Suhen02/CyberSaathi/blob/main/Scam-Alert-Training%20.png" alt="Scenario Based Questions" width="49%">
-  </a>
-  <a href="#">
-    <img src="https://github.com/Suhen02/CyberSaathi/blob/main/Scenerio-based-Q.png" alt="Find Fraud Type Flag" width="49%">
-  </a>
-</p>
-<br>
-<p align="center">
-  <a href="#">
-    <img src="https://github.com/Suhen02/CyberSaathi/blob/main/Cyber-safety-tips.png" alt="Scenario Based Questions" width="49%">
-  </a>
-  <a href="#">
-    <img src="https://github.com/Suhen02/CyberSaathi/blob/main/Emergency-help.png" alt="Find Fraud Type Flag" width="49%">
-  </a>
-</p>
-<br>
-
+GuardianBandu directly addresses this challenge by proactively safeguarding users.  
 
 ---
 
-### 🤝 Our Team
+## 🌐 Web Application
+We developed a **fully working website**, showcasing GuardianBandu’s features.  
 
-* **Team Name:** 404 FOUND
-* **Team Members:**
-    * Suhen M G
-    * Sandeep B
-    * Sanjana M P
+🔗 [Try It Live](https://cybersaathi-l9b1.onrender.com)
 
 ---
 
-### 📜 License
+## 🎥 Video Demonstration
+Demo video covering **GuardianBandu's core functionalities**:  
+- Selecting a **user persona** (Student, Professional, Senior Citizen, Homemaker) to simulate different scam scenarios.  
+- **Live detection of a fake scholarship scam** targeting a student.  
+- Correct identification of **Medicare fraud** targeting a senior citizen.  
+- Usage of **"Emergency Button"** with a simple 4-step protection flow.  
+- **Danger Zone Alerts** that warn users when they make risky decisions, enabling learning and awareness.  
 
-This project is open-source and available under the **MIT License**.
+🔗 [Watch Demo on YouTube](https://www.youtube.com/watch?v=tVIwY8QlIYY)
+
+---
+
+## 🛠 Tech Stack
+- **Frontend:** HTML, CSS, JavaScript, Flask (for integration)  
+- **Backend:** Python, Flask  
+- **AI Models:**  
+  - OpenAI Whisper (Transcription – 90+ languages)  
+  - Fine-tuned BERT NLP Model (Scam/Harassment Classification)  
+- **Hosting:** Render  
+- **Other Tools:** NumPy, Pandas, Hugging Face Transformers  
+
+---
+
+## 🚀 Future Scope
+- Expansion to **SMS/Chat Scam Detection**.  
+- Integration with **caller UI on mobile** (Android/iOS).  
+- Multilingual support for **regional Indian languages** beyond standard Whisper coverage.  
+- Partnership with telecom providers for **nationwide adoption**.  
+
+---
+
+## 📢 Conclusion
+GuardianBandu is more than just a spam filter—it’s a **proactive safeguard** that empowers users (especially vulnerable groups like students & senior citizens) to **detect and prevent scams in real-time**, providing safety, awareness, and legal protection.
+
+---
+
+💡 *Made with ❤️ by Team 404 FOUND for CodeFury 8.0*
