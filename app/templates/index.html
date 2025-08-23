@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}CyberSaathi - Advanced Scam Detection{% endblock %}
+{% block title %}CyberBandu - Advanced Scam Detection{% endblock %}
 
 {% block content %}
 <!-- Home Section -->
@@ -12,7 +12,7 @@
                 <p>Advanced AI-powered scam detection and real-time protection for everyone. Stay safe in the digital world with cutting-edge machine learning technology.</p>
                 
                 <div class="hero-buttons">
-                    <button class="hero-btn" onclick="showSection('analyzer')">
+                    <button class="hero-btn" onclick="window.location.href=`{% url 'analyze' %}`">
                         🔍 Analyze Call
                     </button>
                     <button class="hero-btn" onclick="showSection('learning')">
@@ -93,59 +93,7 @@
 </section>
 
 <!-- Enhanced Analyzer Section -->
-<section id="analyzer" class="section">
-    <div class="container">
-        <div class="analyzer-container">
-            <p style="text-align: center; color: black; margin-bottom: 1rem; font-size: 1.2rem;">
-                Upload an audio file to detect possible scam types.
-            </p>
 
-            <!-- Added form -->
-            <form id="analyzerForm" method="post" enctype="multipart/form-data">
-                <div class="analyzer-interface">
-                    <div class="upload-section">
-                        <div class="upload-area" id="upload-area">
-                            <div class="upload-icon">🔊</div>
-                            <h3 style="color: black; margin-bottom: 1rem;">Drop Audio Here</h3>
-                            <p style="color: black;">- or -</p>
-                            <p style="color: black; margin-top: 0.5rem;">Click to Upload</p>
-                            <input type="file" name="audioFile" id="audioFile" accept="audio/*" style="display: none;">
-                        </div>
-                        
-                        <div style="display: flex; gap: 1rem; margin-top: 2rem;">
-                            <div style="background: #413f3d; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer;">
-                                🔊
-                            </div>
-                            <div style="background: #6b7280; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer;">
-                                🎤
-                            </div>
-                        </div>
-                        
-                        <div style="margin-top: 2rem;">
-                            <button type="reset" class="clear-btn">Clear</button>
-                            <button type="submit" class="submit-btn">Submit</button>
-                        </div>
-                    </div>
-
-                    <div class="results-section">
-                        <div class="input-group">
-                            <label for="transcript">Transcript</label>
-                            <textarea id="transcript" class="form-input" rows="4" placeholder="Transcript will appear here..."></textarea>
-                        </div>
-                        
-                        <div class="input-group">
-                            <label for="category">Predicted Category</label>
-                            <input type="text" id="category" class="form-input" readonly placeholder="Analysis category will appear here...">
-                        </div>
-                        
-                        <button type="button" class="flag-btn">Flag</button>
-                    </div>
-                </div>
-            </form>
-            <!-- End form -->
-        </div>
-    </div>
-</section>
 
 <!-- Enhanced Learning Section -->
 <section id="learning" class="section">
