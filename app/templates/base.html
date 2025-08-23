@@ -16,7 +16,6 @@
 
     <!-- Header -->
    <!-- Replace your existing header section with this -->
-<!-- Replace your existing header section with this -->
 <header class="header">
     <div class="nav-container">
         <div class="logo">
@@ -35,11 +34,14 @@
         <nav class="nav-menu" id="navMenu">
             <div class="nav-overlay" onclick="toggleMobileMenu()"></div>
             <div class="nav-content">
-                <button class="nav-btn active" onclick="showSection('home')">
+                <button class="nav-btn active" onclick="window.location.href=`{% url 'home' %}`">
                     <span class="nav-icon">🏠</span>
                     <span class="nav-text">Home</span>
                 </button>
-                
+                <button class="nav-btn" onclick="window.location.href=`{% url 'analyze' %}`">
+                    <span class="nav-icon">🔍</span>
+                    <span class="nav-text">Analyze</span>
+                </button>
                 <button class="nav-btn" onclick="showSection('learning')">
                     <span class="nav-icon">🎯</span>
                     <span class="nav-text">Learn</span>
@@ -60,7 +62,7 @@
                             <span class="menu-icon">📧</span>
                             user@example.com
                         </div>
-                        <a href="#" onclick="logout()">
+                        <a href="{% url 'logout' %}" onclick="logout()">
                             <span class="menu-icon">🚪</span>
                             Logout
                         </a>
