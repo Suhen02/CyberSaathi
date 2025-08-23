@@ -1,7 +1,6 @@
-<!-- login.html -->
 {% extends 'base_in.html' %}
 
-{% block title %}Login - CyberSaathi{% endblock %}
+{% block title %}Login - CyberBandu{% endblock %}
 
 {% block content %}
 <div class="auth-form" id="loginForm">
@@ -21,8 +20,8 @@
     <form method="post" id="loginFormElement">
         {% csrf_token %}
         <div class="form-group">
-            <input type="email" id="email" name="email" required value="{{ form.email.value|default:'' }}">
-            <label for="email">Email Address</label>
+            <input type="text" id="username" name="username" required value="{{ form.email.value|default:'' }}">
+            <label for="username">username</label>
         </div>
         
         <div class="form-group">
@@ -42,62 +41,6 @@
     </div>
 </div>
 
-<div class="auth-form hidden" id="signupForm" style="display: none;">
-    <div class="form-title">
-        <h2>Sign Up</h2>
-        <p>Create your account to get started</p>
-    </div>
-    
-    <form method="post" action="{% url 'signup' %}" id="signupFormElement">
-        {% csrf_token %}
-        <div class="form-group">
-            <input type="text" id="signup_name" name="name" required>
-            <label for="signup_name">Full Name</label>
-        </div>
-        
-        <div class="form-group">
-            <input type="email" id="signup_email" name="email" required>
-            <label for="signup_email">Email Address</label>
-        </div>
-        
-        <div class="form-group">
-            <input type="password" id="signup_password" name="password" required>
-            <label for="signup_password">Password</label>
-        </div>
-        
-        <div class="form-group">
-            <input type="password" id="confirm_password" name="confirm_password" required>
-            <label for="confirm_password">Confirm Password</label>
-        </div>
-        
-        <button type="submit" class="auth-btn">Sign Up</button>
-    </form>
-    
-    <div class="switch-form">
-        <p>Already have an account? <a href="#" onclick="switchForm('loginForm')">Login here</a></p>
-    </div>
-</div>
-
-<div class="auth-form hidden" id="forgotPasswordForm" style="display: none;">
-    <div class="form-title">
-        <h2>Reset Password</h2>
-        <p>Enter your email to receive reset instructions</p>
-    </div>
-    
-    <form method="post" action="{% url 'password_reset' %}" id="forgotPasswordFormElement">
-        {% csrf_token %}
-        <div class="form-group">
-            <input type="email" id="reset_email" name="email" required>
-            <label for="reset_email">Email Address</label>
-        </div>
-        
-        <button type="submit" class="auth-btn">Send Reset Link</button>
-    </form>
-    
-    <div class="switch-form">
-        <p>Remember your password? <a href="#" onclick="switchForm('loginForm')">Login here</a></p>
-    </div>
-</div>
 {% endblock %}
 
 {% block extra_js %}
@@ -206,4 +149,4 @@
         }, 5000);
     }
 </script>
-{% endblock %}
+{% endblock %}
