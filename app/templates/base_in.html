@@ -1,0 +1,68 @@
+<!-- base.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}CyberSaathi{% endblock %}</title>
+      <link rel="stylesheet" href="{% static 'css/signin_up.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <div class="background-animation">
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+    </div>
+
+    <div class="container">
+        <div class="left-section">
+            <div class="logo">
+                <h1>CyberSaathi</h1>
+                <p>Your Digital Companion</p>
+            </div>
+        </div>
+        
+        <div class="right-section">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+
+    <script>
+        // Form switching animation
+        function switchForm(targetFormId) {
+            const currentForm = document.querySelector('.auth-form:not(.hidden)');
+            const targetForm = document.getElementById(targetFormId);
+            
+            if (currentForm && targetForm && currentForm !== targetForm) {
+                currentForm.classList.add('hidden');
+                
+                setTimeout(() => {
+                    currentForm.style.display = 'none';
+                    targetForm.style.display = 'block';
+                    targetForm.classList.remove('hidden');
+                }, 250);
+            }
+        }
+
+        // Add smooth interaction effects
+        document.addEventListener('DOMContentLoaded', function() {
+            const inputs = document.querySelectorAll('input');
+            
+            inputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    this.parentElement.style.transform = 'scale(1.02)';
+                });
+                
+                input.addEventListener('blur', function() {
+                    this.parentElement.style.transform = 'scale(1)';
+                });
+            });
+        });
+    </script>
+
+    {% block extra_js %}
+    {% endblock %}
+</body>
+</html>

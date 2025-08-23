@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}CyberSaathi - Advanced Scam Detection{% endblock %}</title>
+    <title>{% block title %}CyberBandu - Advanced Scam Detection{% endblock %}</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     {% block extra_css %}{% endblock %}
@@ -16,11 +16,12 @@
 
     <!-- Header -->
    <!-- Replace your existing header section with this -->
+<!-- Replace your existing header section with this -->
 <header class="header">
     <div class="nav-container">
         <div class="logo">
             <div class="logo-icon">🛡️</div>
-            <span class="logo-text">CyberSaathi</span>
+            <span class="logo-text">CyberBandu</span>
         </div>
         
         <!-- Mobile Menu Toggle -->
@@ -38,10 +39,7 @@
                     <span class="nav-icon">🏠</span>
                     <span class="nav-text">Home</span>
                 </button>
-                <button class="nav-btn" onclick="showSection('analyzer')">
-                    <span class="nav-icon">🔍</span>
-                    <span class="nav-text">Analyze</span>
-                </button>
+                
                 <button class="nav-btn" onclick="showSection('learning')">
                     <span class="nav-icon">🎯</span>
                     <span class="nav-text">Learn</span>
@@ -50,6 +48,24 @@
                     <span class="nav-icon">🚨</span>
                     <span class="nav-text">Emergency</span>
                 </button>
+                
+                <!-- Profile Dropdown -->
+                <div class="profile-dropdown">
+                    <button class="nav-btn profile-btn" onclick="toggleProfileDropdown()">
+                        <span class="nav-icon">👤</span>
+                        <span class="nav-text">Profile</span>
+                    </button>
+                    <div class="profile-menu" id="profileMenu">
+                        <div class="profile-email">
+                            <span class="menu-icon">📧</span>
+                            user@example.com
+                        </div>
+                        <a href="#" onclick="logout()">
+                            <span class="menu-icon">🚪</span>
+                            Logout
+                        </a>
+                    </div>
+                </div>
             </div>
         </nav>
     </div>
@@ -65,7 +81,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>CyberSaathi</h3>
+                    <h3>CyberBandu</h3>
                     <p>Protecting millions from scams with advanced AI technology. Our mission is to create a safer digital world for everyone.</p>
                     <p style="margin-top: 1rem;">🛡️ Advanced Protection • 🤖 AI-Powered • 🌍 Global Impact</p>
                 </div>

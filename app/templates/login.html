@@ -1,0 +1,209 @@
+<!-- login.html -->
+{% extends 'base_in.html' %}
+
+{% block title %}Login - CyberSaathi{% endblock %}
+
+{% block content %}
+<div class="auth-form" id="loginForm">
+    <div class="form-title">
+        <h2>Login</h2>
+        <p>Welcome back! Please sign in to your account</p>
+    </div>
+    
+    {% if messages %}
+        {% for message in messages %}
+            <div class="{% if message.tags == 'error' %}error-message{% else %}success-message{% endif %}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    
+    <form method="post" id="loginFormElement">
+        {% csrf_token %}
+        <div class="form-group">
+            <input type="email" id="email" name="email" required value="{{ form.email.value|default:'' }}">
+            <label for="email">Email Address</label>
+        </div>
+        
+        <div class="form-group">
+            <input type="password" id="password" name="password" required>
+            <label for="password">Password</label>
+        </div>
+        
+        <button type="submit" class="auth-btn">Login</button>
+    </form>
+    
+    <div class="forgot-password">
+        <a href="#" onclick="showForgotPassword()">Forgot your password?</a>
+    </div>
+    
+    <div class="switch-form">
+        <p>Don't have an account? <a href="{% url 'signup' %}">Sign up here</a></p>
+    </div>
+</div>
+
+<div class="auth-form hidden" id="signupForm" style="display: none;">
+    <div class="form-title">
+        <h2>Sign Up</h2>
+        <p>Create your account to get started</p>
+    </div>
+    
+    <form method="post" action="{% url 'signup' %}" id="signupFormElement">
+        {% csrf_token %}
+        <div class="form-group">
+            <input type="text" id="signup_name" name="name" required>
+            <label for="signup_name">Full Name</label>
+        </div>
+        
+        <div class="form-group">
+            <input type="email" id="signup_email" name="email" required>
+            <label for="signup_email">Email Address</label>
+        </div>
+        
+        <div class="form-group">
+            <input type="password" id="signup_password" name="password" required>
+            <label for="signup_password">Password</label>
+        </div>
+        
+        <div class="form-group">
+            <input type="password" id="confirm_password" name="confirm_password" required>
+            <label for="confirm_password">Confirm Password</label>
+        </div>
+        
+        <button type="submit" class="auth-btn">Sign Up</button>
+    </form>
+    
+    <div class="switch-form">
+        <p>Already have an account? <a href="#" onclick="switchForm('loginForm')">Login here</a></p>
+    </div>
+</div>
+
+<div class="auth-form hidden" id="forgotPasswordForm" style="display: none;">
+    <div class="form-title">
+        <h2>Reset Password</h2>
+        <p>Enter your email to receive reset instructions</p>
+    </div>
+    
+    <form method="post" action="{% url 'password_reset' %}" id="forgotPasswordFormElement">
+        {% csrf_token %}
+        <div class="form-group">
+            <input type="email" id="reset_email" name="email" required>
+            <label for="reset_email">Email Address</label>
+        </div>
+        
+        <button type="submit" class="auth-btn">Send Reset Link</button>
+    </form>
+    
+    <div class="switch-form">
+        <p>Remember your password? <a href="#" onclick="switchForm('loginForm')">Login here</a></p>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    function showSignupForm() {
+        switchForm('signupForm');
+    }
+    
+    function showForgotPassword() {
+        switchForm('forgotPasswordForm');
+    }
+    
+    // Form validation and submission handling
+    document.addEventListener('DOMContentLoaded', function() {
+        const loginForm = document.getElementById('loginFormElement');
+        const signupForm = document.getElementById('signupFormElement');
+        const forgotForm = document.getElementById('forgotPasswordFormElement');
+        
+        // Login form handling
+        if (loginForm) {
+            loginForm.addEventListener('submit', function(e) {
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                const submitBtn = this.querySelector('.auth-btn');
+                
+                if (email && password) {
+                    submitBtn.textContent = 'Logging in...';
+                    submitBtn.disabled = true;
+                } else {
+                    e.preventDefault();
+                    showError('Please fill in all fields');
+                }
+            });
+        }
+        
+        // Signup form handling
+        if (signupForm) {
+            signupForm.addEventListener('submit', function(e) {
+                const name = document.getElementById('signup_name').value;
+                const email = document.getElementById('signup_email').value;
+                const password = document.getElementById('signup_password').value;
+                const confirmPassword = document.getElementById('confirm_password').value;
+                const submitBtn = this.querySelector('.auth-btn');
+                
+                if (!name || !email || !password || !confirmPassword) {
+                    e.preventDefault();
+                    showError('Please fill in all fields');
+                    return;
+                }
+                
+                if (password !== confirmPassword) {
+                    e.preventDefault();
+                    showError('Passwords do not match');
+                    return;
+                }
+                
+                if (password.length < 8) {
+                    e.preventDefault();
+                    showError('Password must be at least 8 characters long');
+                    return;
+                }
+                
+                submitBtn.textContent = 'Creating Account...';
+                submitBtn.disabled = true;
+            });
+        }
+        
+        // Forgot password form handling
+        if (forgotForm) {
+            forgotForm.addEventListener('submit', function(e) {
+                const email = document.getElementById('reset_email').value;
+                const submitBtn = this.querySelector('.auth-btn');
+                
+                if (email) {
+                    submitBtn.textContent = 'Sending...';
+                    submitBtn.disabled = true;
+                } else {
+                    e.preventDefault();
+                    showError('Please enter your email address');
+                }
+            });
+        }
+    });
+    
+    function showError(message) {
+        // Remove existing error messages
+        const existingError = document.querySelector('.error-message');
+        if (existingError) {
+            existingError.remove();
+        }
+        
+        // Create and show new error message
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'error-message';
+        errorDiv.textContent = message;
+        
+        const activeForm = document.querySelector('.auth-form:not(.hidden)');
+        const formTitle = activeForm.querySelector('.form-title');
+        formTitle.insertAdjacentElement('afterend', errorDiv);
+        
+        // Auto-remove error after 5 seconds
+        setTimeout(() => {
+            if (errorDiv.parentNode) {
+                errorDiv.remove();
+            }
+        }, 5000);
+    }
+</script>
+{% endblock %}
